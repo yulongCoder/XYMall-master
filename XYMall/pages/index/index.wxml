@@ -1,3 +1,4 @@
-<view>首页
-	<text class="iconfont icon-shoucang1"></text>
+<view class="pyg_index">
+	<!-- 搜索框 开始 -->
+	<SearchInput></SearchInput>
 </view>
