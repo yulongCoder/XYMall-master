@@ -28,6 +28,25 @@ Page({
     this.getCategories();
   },
 
+  // 左侧菜单点击事件
+  handleLeftMenuItemTap: function (e) {
+    /*
+    1 获取被点击的标题，身上的索引
+    2 给data 中 的 currentIndex 赋值就可以了
+    3 根据不同的索引，来渲染右侧的商品内容
+    */
+    const {
+      index
+    } = e.currentTarget.dataset;
+    // 构造右侧的商品数据
+    let rightContent = this.Cates[index].children;
+
+    this.setData({
+      currentIndex: index,
+      rightContent
+    });
+  },
+
   // 获取分类数据
   getCategories() {
     request({
