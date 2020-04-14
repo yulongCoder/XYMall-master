@@ -25,7 +25,47 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCategories();
+
+    /*
+    0 web中的本地存储和 小程序中本地存储的区别
+      1 写代码的方式不一样，
+        web: localStorage.setItem("key", "value");
+        小程序中 wx.setStorageSync("key", "value");
+        小程序中获取 wx.getStorageSync("key");
+      2 存储的时候，有没有做类型转换
+        web：不管存入的是什么类型的数据，最终先会调用一下toString(),把数据变成字符串，再存储；
+        小程序中，不存在类型转换这个操作的，存什么类型的数据进来，获取的时候就是什么类型。
+
+    1 先判断一下本地存储中有没有旧的数据，
+    我们会存储这样一个对象到本地，
+    {time:Date.now(), data:[分类数据]};
+    2 没有旧的数据，直接发送新请求，
+    3 有旧的数据，同时，旧的数据也没有过期，就使用本地存储的旧数据即可
+    */
+
+    // 1 获取本地存储中的数据（小程序也是存在本地存储 技术）
+    const Cates = wx.getStorageSync('cates');
+    // 2 判断
+    if (!Cates) {
+      // 不存在，发送请求数据
+      this.getCategories();
+    } else {
+      // 有旧的数据，定义过期时间 10s，后面改成5min
+      if (Date.now() - Cates.time > 1000 * 10) {
+        // 重新发送请求
+        this.getCategories();
+      } else {
+        // 可以使用旧的数据
+        console.log("可以使用旧的数据");
+        this.Cates = Cates.data;
+        let leftMenuList = this.Cates.map(v => v.cat_name);
+        let rightContent = this.Cates[0].children;
+        this.setData({
+          leftMenuList,
+          rightContent
+        })
+      }
+    }
   },
 
   // 左侧菜单点击事件
@@ -53,6 +93,11 @@ Page({
       url: 'https://api-hmugo-web.itheima.net/api/public/v1/categories'
     }).then(result => {
       this.Cates = result.data.message;
+      // 把接口数据存储到本地
+      wx.setStorageSync('cates', {
+        time: Date.now(),
+        data: this.Cates
+      });
 
       // 构造左侧的大菜单数据
       let leftMenuList = this.Cates.map(v => v.cat_name);
