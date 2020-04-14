@@ -8,14 +8,16 @@ Page({
   data: {
     // 轮播图数组
     swiperList: [],
+    // 导航 数组
+    catesList: []
   },
 
   // 页面开始加载就会触发
   onLoad: function () {
     // this.getSwiperList();
-
     // 将原生的请求修改为promise的方式
     this.getSwiperList2();
+    this.getCateList();
   },
   onReady: function () {
 
@@ -54,6 +56,8 @@ Page({
   },
 
   // 网络接口相关
+
+  // 获取首页轮播图数据
   getSwiperList() {
 
     // 1 发送异步请求，获取轮播图数据
@@ -82,6 +86,7 @@ Page({
     });
   },
 
+  // 获取轮播图数据，通过promise的方式
   getSwiperList2() {
     request({
       url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
@@ -96,12 +101,17 @@ Page({
       this.setData({
         swiperList: result.data.message
       });
-    }).then(err => {
-      console.log("err=====");
-      console.log(err);
+    });
+  },
+
+  // 获取分类导航数据
+  getCateList() {
+    request({
+      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/catitems'
+    }).then(result => {
+      this.setData({
+        catesList: result.data.message
+      });
     });
   }
 })
-
-
-
