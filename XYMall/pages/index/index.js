@@ -1,44 +1,21 @@
-//index.js
-//获取应用实例
-const app = getApp()
+// 0 引入用来发送请求的方法, 小程序的话路径要补完整；
+import {
+  request
+} from "../../request/index.js";
+
 
 Page({
   data: {
     // 轮播图数组
     swiperList: [],
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   // 页面开始加载就会触发
   onLoad: function () {
+    // this.getSwiperList();
 
-    // 1 发送异步请求，获取轮播图数据
-    var reqTask = wx.request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
-      data: {},
-      header: {
-        'content-type': 'application/json'
-      },
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result) => {
-        console.log("接口请求成功");
-        console.log(result);
-        this.setData({
-          swiperList: result.data.message
-        });
-      },
-      fail: () => {
-        console.log("接口请求失败");
-      },
-      complete: () => {
-        // 接口请求成功 或者 失败，都走这里
-      }
-    });
+    // 将原生的请求修改为promise的方式
+    this.getSwiperList2();
   },
   onReady: function () {
 
@@ -76,12 +53,55 @@ Page({
     })
   },
 
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  // 网络接口相关
+  getSwiperList() {
+
+    // 1 发送异步请求，获取轮播图数据
+    var reqTask = wx.request({
+      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result) => {
+        console.log("接口请求成功");
+        console.log(result);
+        this.setData({
+          swiperList: result.data.message
+        });
+      },
+      fail: () => {
+        console.log("接口请求失败");
+      },
+      complete: () => {
+        // 接口请求成功 或者 失败，都走这里
+      }
+    });
+  },
+
+  getSwiperList2() {
+    request({
+      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+      data: {},
+      header: {
+        'content-type': 'application/json'
+      },
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text'
+    }).then(result => {
+      this.setData({
+        swiperList: result.data.message
+      });
+    }).then(err => {
+      console.log("err=====");
+      console.log(err);
+    });
   }
 })
+
+
+
