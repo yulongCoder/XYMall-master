@@ -32,7 +32,62 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsObj: {},
+    goodsObj: {
+      "goods_name": "海信(Hisense)LED50MU8600UC 50英寸 4K超高清智能电视 HDR超薄曲面",
+      "goods_price": 6809,
+      "goods_introduce": "<div class=\"lazyimg\"><div moduleid=\"R0503002_2\" modulename=\"关联推荐\"><p><img data-src=\"//image.suning.cn/uimg/sop/commodity/297472958116848970954760_x.jpg?from=mobile&amp;format=80q.jpg\" alt=\"\" src=\"//image.suning.cn/uimg/sop/commodity/297472958116848970954760_x.jpg?from=mobile&format=80q.jpg\" width=\"100%\" height=\"auto\"></p></div><div moduleid=\"R0503002_3\" modulename=\"商品详情\"><p><img data-src=\"//image.suning.cn/uimg/sop/commodity/297472958116848970954760_x.jpg?from=mobile&amp;format=80q.jpg\" alt=\"\" src=\"//image.suning.cn/uimg/sop/commodity/297472958116848970954760_x.jpg?from=mobile&format=80q.jpg\" width=\"100%\" height=\"auto\"></p></div><div moduleid=\"R0503002_6\" modulename=\"安装说明\"><table style=\"width: 100%; height: auto;\">\n<tbody>\n<tr>\n<td><a href=\"https://sale.suning.com/shfw/cdaz/index.html#suning\" target=\"_blank\"><img data-src=\"https://sale.suning.com/shfw/cdazpic/images/all.jpg?from=mobile&amp;format=80q.jpg\" alt=\"\" src=\"https://sale.suning.com/shfw/cdazpic/images/all.jpg?from=mobile&format=80q.jpg\" width=\"100%\" height=\"auto\"></a></td>\n</tr>\n</tbody>\n</table></div></div>",
+      "pics": [{
+          "pics_id": 180132,
+          "goods_id": 43985,
+          "pics_big": "http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_1_800x800.jpg",
+          "pics_mid": "http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_1_400x400.jpg",
+          "pics_sma": "http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_1_200x200.jpg",
+          "pics_big_url": "http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_1_800x800.jpg",
+          "pics_mid_url": "http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_1_400x400.jpg",
+          "pics_sma_url": "http://image5.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_1_200x200.jpg"
+        },
+        {
+          "pics_id": 180133,
+          "goods_id": 43985,
+          "pics_big": "http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_2_800x800.jpg",
+          "pics_mid": "http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_2_400x400.jpg",
+          "pics_sma": "http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_2_200x200.jpg",
+          "pics_big_url": "http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_2_800x800.jpg",
+          "pics_mid_url": "http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_2_400x400.jpg",
+          "pics_sma_url": "http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_2_200x200.jpg"
+        },
+        {
+          "pics_id": 180134,
+          "goods_id": 43985,
+          "pics_big": "http://image3.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_3_800x800.jpg",
+          "pics_mid": "http://image3.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_3_400x400.jpg",
+          "pics_sma": "http://image3.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_3_200x200.jpg",
+          "pics_big_url": "http://image3.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_3_800x800.jpg",
+          "pics_mid_url": "http://image3.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_3_400x400.jpg",
+          "pics_sma_url": "http://image3.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_3_200x200.jpg"
+        },
+        {
+          "pics_id": 180135,
+          "goods_id": 43985,
+          "pics_big": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_4_800x800.jpg",
+          "pics_mid": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_4_400x400.jpg",
+          "pics_sma": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_4_200x200.jpg",
+          "pics_big_url": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_4_800x800.jpg",
+          "pics_mid_url": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_4_400x400.jpg",
+          "pics_sma_url": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_4_200x200.jpg"
+        },
+        {
+          "pics_id": 180136,
+          "goods_id": 43985,
+          "pics_big": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_5_800x800.jpg",
+          "pics_mid": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_5_400x400.jpg",
+          "pics_sma": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_5_200x200.jpg",
+          "pics_big_url": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_5_800x800.jpg",
+          "pics_mid_url": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_5_400x400.jpg",
+          "pics_sma_url": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000193373779_5_200x200.jpg"
+        }
+      ]
+    },
     // 商品是否被收藏
     isCollect: false
   },
@@ -47,7 +102,8 @@ Page({
       goods_id
     } = options;
 
-    this.getGoodsDetail(goods_id);
+    // this.getGoodsDetail(goods_id);
+    // 假装接口宕机了
   },
 
   // 获取商品详情数据
