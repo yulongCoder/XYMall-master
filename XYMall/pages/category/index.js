@@ -94,7 +94,7 @@ Page({
   // 获取分类数据
   getCategories() {
     request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/categories'
+      url: 'categories'
     }).then(result => {
       this.Cates = result.data.message;
       // 把接口数据存储到本地
