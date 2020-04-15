@@ -77,10 +77,20 @@ Page({
       },
       isCollect
     })
-
-
-
   },
+
+  // 点击轮播图 放大预览
+  handlePrevewImage(e) {
+    // 1 先构造要预览的图片数组 
+    const urls = this.GoodsInfo.pics.map(v => v.pics_mid);
+    // 2 接收传递过来的图片url
+    const current = e.currentTarget.dataset.url;
+    wx.previewImage({
+      current,
+      urls
+    });
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
