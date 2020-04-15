@@ -1,2 +1,8 @@
-<!--pages/cart/index.wxml-->
-<text>pages/cart/index.wxml</text>
+<!-- 收货地址 -->
+<view class="revice_address_row">
+	<!-- 当收货地址 不存在 按钮显示  对象 空对象 bool类型也是true  -->
+	<view class="address_btn" wx:if="{{!address.userName}}">
+		<button bindtap="handleChooseAddress" type="primary" plain>获取收货地址</button>
+	</view>
+
+</view>
