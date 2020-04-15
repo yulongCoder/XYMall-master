@@ -7,7 +7,22 @@ import {
 Page({
   data: {
     // 轮播图数组
-    swiperList: [],
+    swiperList: [{
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/banner1.png",
+      "open_type": "navigate",
+      "goods_id": 129,
+      "navigator_url": "/pages/goods_detail/main?goods_id=129"
+    }, {
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/banner2.png",
+      "open_type": "navigate",
+      "goods_id": 395,
+      "navigator_url": "/pages/goods_detail/main?goods_id=395"
+    }, {
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/banner3.png",
+      "open_type": "navigate",
+      "goods_id": 38,
+      "navigator_url": "/pages/goods_detail/main?goods_id=38"
+    }]
   },
 
   // 页面开始加载就会触发
@@ -15,7 +30,9 @@ Page({
     // this.getSwiperList();
 
     // 将原生的请求修改为promise的方式
-    this.getSwiperList2();
+    // this.getSwiperList2();
+
+    // 假装接口宕机了，不请求接口了；
   },
   onReady: function () {
 
@@ -102,6 +119,3 @@ Page({
     });
   }
 })
-
-
-
