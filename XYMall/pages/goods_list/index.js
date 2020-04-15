@@ -26,7 +26,41 @@ Page({
         isActive: false
       }
     ],
-    goodsList:[]
+    goodsList: [{
+        "goods_id": 57396,
+        "cat_id": 999,
+        "goods_name": "紫米ZMI 小米QC3.0快充车充 5V2.4A双USB智能输出 一拖二手机平板通用汽车充电器 AP821 银色",
+        "goods_price": 69,
+        "goods_number": 100,
+        "goods_weight": 100,
+        "goods_big_logo": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000740439998_1_800x800.jpg",
+        "goods_small_logo": "http://image1.suning.cn/uimg/b2c/newcatentries/0000000000-000000000740439998_1_400x400.jpg",
+        "add_time": 1516663006,
+        "upd_time": 1516663006,
+        "hot_mumber": 0,
+        "is_promote": false,
+        "cat_one_id": 962,
+        "cat_two_id": 981,
+        "cat_three_id": 999
+      },
+      {
+        "goods_id": 57224,
+        "cat_id": 993,
+        "goods_name": "70迈小米行车记录仪智能后视镜导航行车记录仪云镜测速一体机 8.88英寸大屏幕 官方标配",
+        "goods_price": 1299,
+        "goods_number": 100,
+        "goods_weight": 100,
+        "goods_big_logo": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000719098452_2_800x800.jpg",
+        "goods_small_logo": "http://image2.suning.cn/uimg/b2c/newcatentries/0000000000-000000000719098452_2_400x400.jpg",
+        "add_time": 1516662412,
+        "upd_time": 1516662412,
+        "hot_mumber": 0,
+        "is_promote": false,
+        "cat_one_id": 1480,
+        "cat_two_id": 1481,
+        "cat_three_id": 993
+      }
+    ]
   },
 
   // 接口要的参数
@@ -43,7 +77,8 @@ Page({
   onLoad: function (options) {
     console.log(options.cid);
     this.QueryParams.cid = options.cid;
-    this.getGoodsList();
+    // this.getGoodsList();
+    // 假装接口宕机了
 
   },
 
@@ -57,7 +92,7 @@ Page({
     this.setData({
       goodsList: res.goods
     });
-    
+
   },
 
   // 标题点击事件 从子组件传递过来
