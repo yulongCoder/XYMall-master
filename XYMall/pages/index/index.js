@@ -77,7 +77,7 @@ Page({
         console.log("接口请求成功");
         console.log(result);
         this.setData({
-          swiperList: result.data.message
+          swiperList: result
         });
       },
       fail: () => {
@@ -102,7 +102,7 @@ Page({
       responseType: 'text'
     }).then(result => {
       this.setData({
-        swiperList: result.data.message
+        swiperList: result
       });
     });
   },
@@ -113,7 +113,7 @@ Page({
       url: 'home/catitems'
     }).then(result => {
       this.setData({
-        catesList: result.data.message
+        catesList: result
       });
     });
   },
@@ -124,7 +124,7 @@ Page({
       url: 'home/floordata'
     }).then(result => {
       this.setData({
-        floorList: result.data.message
+        floorList: result
       });
     });
   }

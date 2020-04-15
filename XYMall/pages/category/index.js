@@ -3,6 +3,8 @@ import {
   request
 } from "../../request/index.js";
 
+import regeneratorRuntime from '../../lib/runtime/runtime';
+
 // pages/category/index.js
 Page({
 
@@ -50,12 +52,14 @@ Page({
     // 2 判断
     if (!Cates) {
       // 不存在，发送请求数据
-      this.getCategories();
+      // this.getCategories();
+      this.getCategories2();
     } else {
       // 有旧的数据，定义过期时间 10s，后面改成5min
       if (Date.now() - Cates.time > 1000 * 10) {
         // 重新发送请求
-        this.getCategories();
+        // this.getCategories();
+        this.getCategories2();
       } else {
         // 可以使用旧的数据
         console.log("可以使用旧的数据");
@@ -114,5 +118,32 @@ Page({
         rightContent
       });
     });
+  },
+
+
+  async getCategories2() {
+    console.log("getCategories2");
+
+    // 1 使用es7的async await来发送请求
+    const res = await request({
+      url: "categories"
+    });
+    this.Cates = res;
+
+    // 把接口的数据存入到本地存储中
+    wx.setStorageSync("cates", {
+      time: Date.now(),
+      data: this.Cates
+    });
+    // 构造左侧的大菜单数据
+    let leftMenuList = this.Cates.map(v => v.cat_name);
+    // 构造右侧的商品数据
+    let rightContent = this.Cates[0].children;
+    this.setData({
+      leftMenuList,
+      rightContent
+    })
   }
+
+
 })
