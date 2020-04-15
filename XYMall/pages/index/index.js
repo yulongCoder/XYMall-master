@@ -7,17 +7,48 @@ import {
 Page({
   data: {
     // 轮播图数组
-    swiperList: [],
+    swiperList: [{
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/banner1.png",
+      "open_type": "navigate",
+      "goods_id": 129,
+      "navigator_url": "/pages/goods_detail/main?goods_id=129"
+    }, {
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/banner2.png",
+      "open_type": "navigate",
+      "goods_id": 395,
+      "navigator_url": "/pages/goods_detail/main?goods_id=395"
+    }, {
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/banner3.png",
+      "open_type": "navigate",
+      "goods_id": 38,
+      "navigator_url": "/pages/goods_detail/main?goods_id=38"
+    }],
     // 导航 数组
-    catesList: []
+    catesList: [{
+      "name": "分类",
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/icon_index_nav_4@2x.png",
+      "open_type": "switchTab",
+      "navigator_url": "/pages/category/main"
+    }, {
+      "name": "秒杀拍",
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/icon_index_nav_3@2x.png"
+    }, {
+      "name": "超市购",
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/icon_index_nav_2@2x.png"
+    }, {
+      "name": "母婴品",
+      "image_src": "https://api-hmugo-web.itheima.net/pyg/icon_index_nav_1@2x.png"
+    }]
   },
 
   // 页面开始加载就会触发
   onLoad: function () {
     // this.getSwiperList();
     // 将原生的请求修改为promise的方式
-    this.getSwiperList2();
-    this.getCateList();
+    // this.getSwiperList2();
+    // this.getCateList();
+
+    // 假装接口宕机了
   },
   onReady: function () {
 
