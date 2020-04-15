@@ -1,3 +1,21 @@
+/*
+1 用户上滑页面 滚动条触底 开始加载下一页数据
+  1 找到滚动条触底事件  微信小程序官方开发文档寻找
+    1 获取到总页数  只有总条数
+    总页数 = Math.ceil(总条数 /  页容量  pagesize)
+    总页数     = Math.ceil( 23 / 10 ) = 3
+    2 获取到当前的页码  pagenum
+    3 判断一下 当前的页码是否大于等于 总页数 
+      表示 没有下一页数据
+
+  2 判断还有没有下一页数据
+  3 假如没有下一页数据 弹出一个提示
+  4 假如还有下一页数据 来加载下一页数据
+    1 当前的页码 ++ 
+    2 重新发送请求
+    3 数据请求回来  要对data中的数组 进行 拼接 而不是全部替换！！！
+*/
+
 import {
   request
 } from "../../request/index.js";
@@ -26,7 +44,7 @@ Page({
         isActive: false
       }
     ],
-    goodsList:[]
+    goodsList: []
   },
 
   // 接口要的参数
@@ -36,6 +54,8 @@ Page({
     pagenum: 1,
     pagesize: 10
   },
+  // 总页数
+  totalPages: 1,
 
   /**
    * 生命周期函数--监听页面加载
@@ -54,10 +74,16 @@ Page({
       data: this.QueryParams
     });
 
+    // 获取 总条数
+    const total = res.total;
+    // 计算总页数
+    this.totalPages = Math.ceil(total / this.QueryParams.pagesize);
+    console.log(this.totalPages);
+
     this.setData({
-      goodsList: res.goods
+      // 拼接了数组
+      goodsList: [...this.data.goodsList, ...res.goods]
     });
-    
   },
 
   // 标题点击事件 从子组件传递过来
@@ -112,17 +138,19 @@ Page({
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 页面上滑 滚动条触底事件
+  onReachBottom() {
+    //  1 判断还有没有下一页数据
+    if (this.QueryParams.pagenum >= this.totalPages) {
+      // 没有下一页数据
+      console.log();
+      // console.log('%c' + "没有下一页数据", "color:red;font-size:100px;background-image:linear-gradient(to right,#0094ff,pink)");
+      wx.showToast({ title: '没有下一页数据' });
+    } else {
+      // 还有下一页数据
+      // console.log('%c' + "有下一页数据", "color:red;font-size:100px;background-image:linear-gradient(to right,#0094ff,pink)");
+      this.QueryParams.pagenum++;
+      this.getGoodsList();
+    }
   }
 })
