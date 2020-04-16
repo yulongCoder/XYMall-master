@@ -29,7 +29,7 @@ page {
 
 /* 购物车列表 */
 .cart_content {
-  background-color: yellow;
+  background-color: white;
 }
 
 .cart_content .cart_title {
@@ -62,7 +62,6 @@ page {
 
 .cart_content .cart_main .cart_item .cart_img_wrap image {
   width: 80%;
-  background-color: red;
 }
 
 .cart_content .cart_main .cart_item .cart_info_wrap {
