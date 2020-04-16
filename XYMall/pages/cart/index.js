@@ -13,6 +13,12 @@
         1 诱导用户 自己 打开 授权设置页面(wx.openSetting) 当用户重新给与 获取地址权限的时候 
         2 获取收货地址
       4 把获取到的收货地址 存入到 本地存储中 
+
+2 页面加载完毕
+  0 onLoad  onShow ，由于购物车页面频繁的被打开，所以在 onShow中写代码
+  1 获取本地存储中的地址数据
+  2 把数据 设置给data中的一个变量
+
 */
 
 import {
@@ -30,13 +36,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    address: {}
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 1 获取缓存中的收货地址信息
+    const address = wx.getStorageSync("address");
+    
+    this.setData({
+      address
+    });
 
   },
 
