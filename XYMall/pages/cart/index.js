@@ -29,6 +29,16 @@
 4 全选的实现 数据的展示
   1 onShow 获取缓存中的购物车数组
   2 根据购物车中的商品数据 所有的商品都被选中 checked=true  全选就被选中
+
+5 总价格和总数量
+  1 都需要商品被选中 我们才拿它来计算
+  2 获取购物车数组
+  3 遍历
+  4 判断商品是否被选中
+  5 总价格 += 商品的单价 * 商品的数量
+  5 总数量 += 商品的数量
+  6 把计算后的价格和数量 设置回data中即可
+
 */
 
 import {
@@ -49,6 +59,8 @@ Page({
     address: {},
     cart: [],
     allChecked: false,
+    totalPrice: 0,
+    totalNum: 0
   },
 
   /**
@@ -64,13 +76,31 @@ Page({
     // 那么 every 方法的返回值为 true，只要有一个回调函数返回了false，那么不再循环执行，直接返回 false；
     // 空数组，调用 every，返回值就是 true
     // 所以这里空数组时，allChecked 应该为false
-    const allChecked = cart.length ? (cart.every(v=>v.checked)) : false;
+    // const allChecked = cart.length ? (cart.every(v => v.checked)) : false;
+    let allChecked = true;
+
+    // 1 总价格 总数量
+    let totalPrice = 0;
+    let totalNum = 0;
+    cart.forEach(v => {
+      if (v.checked) {
+        totalPrice += v.num * v.goods_price;
+        totalNum += v.num;
+      } else{
+        allChecked = false;
+      }
+    });
+
+    // 判断数组是否为空
+    allChecked = (cart.length != 0) ? allChecked : false;
 
     // 2 给data赋值
     this.setData({
       address,
       cart,
-      allChecked
+      allChecked,
+      totalPrice,
+      totalNum
     });
   },
 
