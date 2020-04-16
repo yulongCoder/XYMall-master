@@ -53,6 +53,18 @@
   4 遍历购物车数组 让里面 商品 选中状态跟随  allChecked 改变而改变
   5 把购物车数组 和 allChecked 重新设置回data 把购物车重新设置回 缓存中 
 
+8 商品数量的编辑
+  1 "+" "-" 按钮 绑定同一个点击事件 区分的关键 自定义属性 
+    1 “+” "+1"
+    2 "-" "-1"
+  2 传递被点击的商品id goods_id
+  3 获取data中的购物车数组 来获取需要被修改的商品对象
+  4 当 购物车的数量 =1 同时 用户 点击 "-"
+    弹窗提示(showModal) 询问用户 是否要删除
+    1 确定 直接执行删除
+    2 取消  什么都不做 
+  4 直接修改商品对象的数量 num
+  5 把cart数组 重新设置回 缓存中 和data中 this.setCart
 */
 
 import {
@@ -173,4 +185,37 @@ Page({
     // 4 把修改后的值 填充回data或者缓存中
     this.setCart(cart);
   },
+
+
+  // 商品数量的编辑功能
+  async handleItemNumEdit(e) {
+
+    // 1 获取传递过来的参数 
+    const {
+      operation,
+      id
+    } = e.currentTarget.dataset;
+    // 2 获取购物车数组
+    let {
+      cart
+    } = this.data;
+    // 3 找到需要修改的商品的索引
+    const index = cart.findIndex(v => v.goods_id === id);
+    // 4 判断是否要执行删除
+    if (cart[index].num === 1 && operation === -1) {
+      // 4.1 弹窗提示
+      const res = await showModal({
+        content: "您是否要删除？"
+      });
+      if (res.confirm) {
+        cart.splice(index, 1);
+        this.setCart(cart);
+      }
+    } else {
+      // 4  进行修改数量
+      cart[index].num += operation;
+      // 5 设置回缓存和data中
+      this.setCart(cart);
+    }
+  }
 })
