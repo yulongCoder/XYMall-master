@@ -28,6 +28,9 @@ import {
   showModal,
   showToast
 } from "../../utils/asyncWx.js";
+import {
+  request
+} from "../../request/index.js";
 import regeneratorRuntime from '../../lib/runtime/runtime';
 
 Page({
@@ -83,6 +86,39 @@ Page({
       return;
     }
     console.log("缓存中有 token");
-  }
 
+
+    // 3 创建订单
+    // 3.1 准备 请求头参数
+    const header = {
+      Authorization: token
+    };
+    // 3.2 准备 请求体参数
+    const order_price = this.data.totalPrice;
+    const consignee_addr = this.data.address.all;
+    const cart = this.data.cart;
+    let goods = [];
+    cart.forEach(v => goods.push({
+      goods_id: v.goods_id,
+      goods_number: v.num,
+      goods_price: v.goods_price
+    }))
+
+    const orderParams = {
+      order_price,
+      consignee_addr,
+      goods
+    };
+
+    // 4 准备发送请求 创建订单 获取订单编号
+    const {
+      order_number
+    } = await request({
+      url: "my/orders/create",
+      method: "POST",
+      data: orderParams,
+      header: header
+    });
+    console.log(order_number);
+  }
 })
