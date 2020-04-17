@@ -46,11 +46,16 @@ Page({
       // var {
       //   token
       // } = await request({
-      //   url: "/users/wxlogin",
+      //   url: "users/wxlogin",
       //   data: loginParams,
       //   method: "POST"
       // });
-      
+
+      // 请求报错
+      // {message: null, meta: {msg: "Error: invalid code, hints: [ req_id: 4EiBe24ce-fDIMUa ]", status: 400}}
+
+
+      // 测试使用
       const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjIzLCJpYXQiOjE1NjQ3MzAwNzksImV4cCI6MTAwMTU2NDczMDA3OH0.YPt-XeLnjV-_1ITaXGY2FhxmCe4NvXuRnRB8OMCfnPo";
 
       // 4 把token存入缓存中 同时跳转回上一个页面
