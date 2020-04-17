@@ -122,16 +122,24 @@ Page({
       });
 
       // 5 发起 预支付接口
-      const {
-        pay
-      } = await request({
-        url: "my/orders/req_unifiedorder",
-        method: "POST",
-        header:header,
-        data: {
-          order_number
-        }
-      });
+      // const {
+      //   pay
+      // } = await request({
+      //   url: "my/orders/req_unifiedorder",
+      //   method: "POST",
+      //   header:header,
+      //   data: {
+      //     order_number
+      //   }
+      // });
+
+      const pay = {
+        timeStamp: "1564730510",
+        nonceStr: "SReWbt3nEmpJo3tr",
+        package: "prepay_id=wx02152148991420a3b39a90811023326800",
+        signType: "MD5",
+        paySign: "3A6943C3B865FA2B2C825CDCB33C5304"
+      };
 
       // 6 发起微信支付 
       await requestPayment(pay);
