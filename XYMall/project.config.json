@@ -91,6 +91,12 @@
 					"pathName": "pages/pay/index",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "授权",
+					"pathName": "pages/auth/index",
+					"scene": null
 				}
 			]
 		}

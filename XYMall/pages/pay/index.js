@@ -55,7 +55,7 @@ Page({
     let cart = wx.getStorageSync("cart") || [];
     // 过滤后的购物车数组
     cart = cart.filter(v => v.checked);
-    
+
     // 1 总价格 总数量
     let totalPrice = 0;
     let totalNum = 0;
@@ -69,5 +69,20 @@ Page({
       totalPrice,
       totalNum
     });
+  },
+
+  // 点击 支付 
+  async handleOrderPay() {
+    // 1 判断缓存中有没有token 
+    const token = wx.getStorageSync("token");
+    // 2 判断
+    if (!token) {
+      wx.navigateTo({
+        url: '/pages/auth/index'
+      });
+      return;
+    }
+    console.log("缓存中有 token");
   }
+
 })
