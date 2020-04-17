@@ -91,9 +91,10 @@ Page({
 
       // 3 创建订单
       // 3.1 准备 请求头参数
-      const header = {
-        Authorization: token
-      };
+      // const header = {
+      //   Authorization: token
+      // };
+      
       // 3.2 准备 请求体参数
       const order_price = this.data.totalPrice;
       const consignee_addr = this.data.address.all;
@@ -117,8 +118,7 @@ Page({
       } = await request({
         url: "my/orders/create",
         method: "POST",
-        data: orderParams,
-        header: header
+        data: orderParams
       });
 
       // 5 发起 预支付接口
@@ -127,7 +127,6 @@ Page({
       } = await request({
         url: "my/orders/req_unifiedorder",
         method: "POST",
-        header:header,
         data: {
           order_number
         }
