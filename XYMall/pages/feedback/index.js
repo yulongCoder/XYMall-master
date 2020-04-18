@@ -4,6 +4,13 @@
   2 获取到 图片的路径  数组
   3 把图片路径 存到 data的变量中
   4 页面就可以根据 图片数组 进行循环显示 自定义组件
+
+2 点击 自定义图片 组件，删除功能
+  1 获取被点击的元素的索引
+  2 获取 data中的图片数组
+  3 根据索引 数组中删除对应的元素
+  4 把数组重新设置回data中
+
 */
 
 Page({
@@ -65,4 +72,21 @@ Page({
     });
 
   },
+  
+  // 点击 自定义图片组件
+  handleRemoveImg(e) {
+    // 2 获取被点击的组件的索引
+    const {
+      index
+    } = e.currentTarget.dataset;
+    // 3 获取data中的图片数组
+    let {
+      chooseImgs
+    } = this.data;
+    // 4 删除元素
+    chooseImgs.splice(index, 1);
+    this.setData({
+      chooseImgs
+    })
+  }
 })
