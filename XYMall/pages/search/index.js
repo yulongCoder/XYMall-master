@@ -1,4 +1,15 @@
-// pages/search/index.js
+/* 
+1 输入框绑定 值改变事件 input事件
+  1 获取到输入框的值
+  2 合法性判断 
+  3 检验通过 把输入框的值 发送到后台
+  4 返回的数据打印到页面上
+2 防抖 （防止抖动） 定时器  节流 
+  0 防抖 一般 输入框中 防止重复输入 重复发送请求
+  1 节流 一般是用在页面下拉和上拉 
+  1 定义全局的定时器id
+ */
+
 Page({
 
   /**
@@ -8,59 +19,9 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 输入框的值改变 就会触发的事件
+  handleInput(e) {
+    console.log(e.detail.value);
   }
+  
 })
