@@ -1,4 +1,11 @@
-// pages/feedback/index.js
+/*
+1 点击 “+” 触发tap点击事件
+  1 调用小程序内置的 选择图片的 api
+  2 获取到 图片的路径  数组
+  3 把图片路径 存到 data的变量中
+  4 页面就可以根据 图片数组 进行循环显示 自定义组件
+*/
+
 Page({
 
   /**
@@ -16,6 +23,10 @@ Page({
         isActive: false
       }
     ],
+    // 被选中的图片路径 数组
+    chooseImgs: [],
+    // 文本域的内容
+    textVal: ""
   },
 
   handleTabsItemChange(e) {
@@ -32,6 +43,26 @@ Page({
     this.setData({
       tabs
     })
-  }
+  },
 
+  // 点击 “+” 选择图片
+  handleChooseImg() {
+    // 2 调用小程序内置的选择图片api
+    wx.chooseImage({
+      // 同时选中的图片的数量
+      count: 9,
+      // 图片的格式  原图  压缩
+      sizeType: ['original', 'compressed'],
+      // 图片的来源  相册  照相机
+      sourceType: ['album', 'camera'],
+      success: (result) => {
+
+        this.setData({
+          // 图片数组 进行拼接 
+          chooseImgs: [...this.data.chooseImgs, ...result.tempFilePaths]
+        })
+      }
+    });
+
+  },
 })

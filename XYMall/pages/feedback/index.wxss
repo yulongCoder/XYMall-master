@@ -53,7 +53,6 @@ page {
 .fb_main .fb_tool .up_img_item {
   margin-left: 20rpx;
   margin-top: 20rpx;
-  background-color: yellow;
 }
 
 .fb_main .form_btn_wrap {
