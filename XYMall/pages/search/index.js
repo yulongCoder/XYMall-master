@@ -59,7 +59,7 @@ Page({
     }, 1000);
   },
 
-  // 发送请求获取搜索建议 数据
+  // 发送请求获取搜索建议 数据 
   async qsearch(query) {
     const res = await request({
       url: "goods/qsearch",
