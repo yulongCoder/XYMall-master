@@ -70,9 +70,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options.cid);
-    this.QueryParams.cid = options.cid;
+    this.QueryParams.cid = options.cid || "";
+    this.QueryParams.query = options.query || "";
     this.getGoodsList();
-
   },
 
   // 获取商品列表数据
